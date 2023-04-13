@@ -1,0 +1,21 @@
+_schema-version: "3.2"
+ID: createuserworkflow
+version: 0.0.1
+modules:
+- name: wf-module-createuserinsubaccount
+  type: com.sap.application.content
+  path: wf-module-createuserinsubaccount
+  requires:
+  - name: wf_createuser_service
+    parameters:
+      content-target: true
+      service-key:
+        config:
+          deployUsageScenario: workflow
+        name: spa-workflow-service-key
+resources:
+- name: wf_createuser_service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: process-automation-service
+    service-plan: standard
